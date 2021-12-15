@@ -28,10 +28,19 @@ namespace FeiraLivre.Api.Models
 
         public string Registro { get; set; }
 
+        public string Logradouro { get; set; }
+
+        public int Numero { get; set; }
+
+        public string Bairro { get; set; }
+
+        public string Referencia { get; set; }
     }
 
     public class Regiao
     {
         public string NomeRegiao { get; set; }
+
+        public static implicit operator Regiao (string regiao) => new Regiao{ NomeRegiao = regiao };
     }
 }
