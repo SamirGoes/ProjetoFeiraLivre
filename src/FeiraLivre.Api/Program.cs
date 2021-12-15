@@ -1,4 +1,7 @@
+using System.Configuration;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using FeiraLivre.Api.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,9 @@ builder.Services.AddSwaggerGen(s =>
     s.IncludeXmlComments(xmlPath);
     
 });
+
+var connection = builder.Configuration["ConexaoSqlite:SqliteConnectionString"];
+builder.Services.AddDbContext<Context>(opt => opt.UseSqlite(connection));
 
 var app = builder.Build();
 
